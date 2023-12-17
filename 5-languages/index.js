@@ -1,11 +1,11 @@
-let language = "czsss";
+let language = "ru";
 
 switch (language) {
-  case "ru":
-    console.log("Доброе утро!");
-    break;
   case "cz":
     console.log("Dobré ráno!");
+    break;
+  case "ru":
+    console.log("Доброе утро!");
     break;
   case "en":
     console.log("Good morning!");
