@@ -1,32 +1,34 @@
 function crypto(password) {
-  let stringToArr = password.split("");
+  // Переделала строку в массив
+  const stringToArr = password.split("");
   console.log("Строка -> Массив:", stringToArr);
-  [firstLetter, secondLetter, thirdLetter, ...otherLetters] = stringToArr;
 
-  for (let index = 0; index < stringToArr.length; index++) {
-    const oldTask = stringToArr[index];
-    stringToArr.splice(index, 1);
-    stringToArr.unshift(oldTask);
-  }
-  console.log("Перевернутый пароль:", stringToArr);
+  const reversedArr = [];
+  stringToArr.forEach((elem) => {
+    reversedArr.unshift(elem);
+  });
 
-  const arrToStr = stringToArr.join("");
+  console.log(stringToArr); // оригинальный массив
+  console.log(reversedArr); // массив наоборот
+
+  const arrToStr = reversedArr.join("");
   console.log("Перевернутый пароль -> Строка:", arrToStr);
 }
 
 crypto("hello");
-crypto("password");
 
 function check(newPassword, oldPassword) {
-  const newPasswordArr = Array.from(newPassword);
+  const newPasswordArr = newPassword.split("");
 
-  for (let index = 0; index < newPasswordArr.length; index++) {
-    const oldTask = newPasswordArr[index];
-    newPasswordArr.splice(index, 1);
-    newPasswordArr.unshift(oldTask);
-  }
-  console.log("Новый пароль = изначальный пароль", newPasswordArr);
-  const newPasswordStr = newPasswordArr.join("");
+  const initialArr = [];
+  newPasswordArr.forEach(function (elem) {
+    initialArr.unshift(elem);
+  });
+
+  console.log(initialArr); // вернули массив в первоначальный вид
+
+  const newPasswordStr = initialArr.join("");
+  console.log(newPasswordStr); // перевели массив в строку
 
   if (newPasswordStr === oldPassword) {
     console.log("Вы ввели правильный пароль.");
@@ -34,6 +36,4 @@ function check(newPassword, oldPassword) {
     console.log("Введите корректный пароль.");
   }
 }
-
-check("olleh", "hello"); // Вы ввели правильный пароль.
-check("drowssap", "passwordqqq"); // Введите корректный пароль.
+check("olleh", "hello");
